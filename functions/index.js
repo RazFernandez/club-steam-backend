@@ -1,42 +1,29 @@
-// The Cloud Functions for Firebase SDK to create Cloud Functions and triggers.
-const { logger } = require("firebase-functions");
 const { onRequest } = require("firebase-functions/v2/https");
-const { onDocumentCreated } = require("firebase-functions/v2/firestore");
-
-// The Firebase Admin SDK to access Firestore.
 const { initializeApp } = require("firebase-admin/app");
 const { getFirestore } = require("firebase-admin/firestore");
 
+// Start the firebase SDK
 initializeApp();
 
-// Take the text parameter passed to this HTTP endpoint and insert it into
-// Firestore under the path /messages/:documentId/original
-exports.addmessage = onRequest(async (req, res) => {
-  // Grab the text parameter.
-  const original = req.query.text;
-  // Push the new message into Firestore using the Firebase Admin SDK.
-  const writeResult = await getFirestore()
-      .collection("messages")
-      .add({original: original});
-  // Send back a message that we've successfully written the message
-  res.json({result: `Message with ID: ${writeResult.id} added.`});
-});
+// Function to add a user on firestore
+exports.addUser = onRequest(async (req, res) => {
+  const db = getFirestore();
 
-// Listens for new messages added to /messages/:documentId/original
-// and saves an uppercased version of the message
-// to /messages/:documentId/uppercase
-exports.makeuppercase = onDocumentCreated("/messages/{documentId}", (event) => {
-  // Grab the current value of what was written to Firestore.
-  const original = event.data.data().original;
+  try {
+    const newUser = {
+      name: "Angel",
+      createdAt: new Date(),
+    };
 
-  // Access the parameter `{documentId}` with `event.params`
-  logger.log("Uppercasing", event.params.documentId, original);
+    // Create the user in the database
+    const docRef = await db.collection("Users").add(newUser);
 
-  const uppercase = original.toUpperCase();
+    // Message to indicate the creation of the user was sucessful.
+    res.status(200).json({ message: `User added with ID: ${docRef.id}` });
 
-  // You must return a Promise when performing
-  // asynchronous tasks inside a function
-  // such as writing to Firestore.
-  // Setting an 'uppercase' field in Firestore document returns a Promise.
-  return event.data.ref.set({uppercase}, {merge: true});
+  } catch (error) {
+    // Message to indicate the creation of the user failed.
+    console.error("Error adding user:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 });
