@@ -1,7 +1,6 @@
 // functions/firebase-database/addUser.js
 const { onRequest } = require("firebase-functions/v2/https");
 const { getFirestore } = require("firebase-admin/firestore");
-require("../firebase"); // Aquí importa la inicialización de Firebase
 
 // Function to add a user on firestore
 const addUser = onRequest(async (req, res) => {
@@ -16,6 +15,7 @@ const addUser = onRequest(async (req, res) => {
     const docRef = await db.collection("Users").add(newUser);
 
     res.status(200).json({ message: `User added with ID: ${docRef.id}` });
+
   } catch (error) {
     console.error("Error adding user:", error);
     res.status(500).json({ error: "Internal Server Error" });
