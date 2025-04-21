@@ -5,7 +5,7 @@ const { addUser } = require("./firebase-database/addUser");
 const { createUser } = require('./firebase-database/createUser')
 //const { createUserInFirestore } = require("./firebase-database/onUserCreated");
 
-initializeApp();
+//initializeApp();
 
 exports.addUser = addUser;
 exports.createUser = createUser;

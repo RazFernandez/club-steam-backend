@@ -1,9 +1,13 @@
 const { onRequest } = require("firebase-functions/v2/https");
 const { getFirestore } = require("firebase-admin/firestore");
+const admin = require("firebase-admin");
 
+
+// Initialize Firebase Admin SDK
+const app = admin.initializeApp();
 
 const createUser = onRequest(async (req, res) => {
-  const db = getFirestore();
+  const db = getFirestore(app, "firestore-clubsteam-db");
 
   try {
     const {
