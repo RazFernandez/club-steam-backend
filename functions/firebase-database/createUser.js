@@ -1,32 +1,64 @@
 const { onRequest } = require("firebase-functions/v2/https");
 const { getFirestore } = require("firebase-admin/firestore");
 
+
 const createUser = onRequest(async (req, res) => {
   const db = getFirestore();
 
   try {
-    // Accept data from the request body
-    const { email, password } = req.body;
+    const {
+      uid,
+      nombres,
+      apellidoPaterno,
+      apellidoMaterno,
+      correoElectronico,
+      numeroCelular,
+      tipoUsuario,
+      fotoPerfil,
+      proyectos,
+      ingenieria,
+      unidadAdministrativa,
+      numeroControl,
+    } = req.body;
 
-    // If any data is missing, then return an error request message
-    if (!email || !password) {
-      return res
-        .status(400)
-        .json({ error: "Email and password are required." });
+    if (!uid || !tipoUsuario || !correoElectronico) {
+      return res.status(400).json({
+        error:
+          "Missing required fields: uid, tipoUsuario, or correoElectronico.",
+      });
     }
 
-    // Object that saves the data to create a new user in the database
+    // Create the user object
     const newUser = {
-      email,
-      password,
-      createdAt: new Date(),
+      uid,
+      nombres,
+      apellidoPaterno,
+      apellidoMaterno,
+      correoElectronico,
+      numeroCelular,
+      tipoUsuario,
+      fotoPerfil: fotoPerfil || "",
+      proyectos: proyectos || [],
     };
 
-    // Creation of the user in firestore
-    const docRef = await db.collection("Users").add(newUser);
-    res.status(200).json({ message: `User added with ID: ${docRef.id}` });
+    // Add additional fields based on user type
+    if (tipoUsuario === "Docente") {
+      newUser.ingenieria = ingenieria;
+    } else if (tipoUsuario === "Estudiante") {
+      newUser.ingenieria = ingenieria;
+      newUser.numeroControl = numeroControl;
+    } else if (tipoUsuario === "Colaborador") {
+      newUser.unidadAdministrativa = unidadAdministrativa;
+    }
+
+    // Save user document using UID as the document ID
+    await db.collection("Users").doc(uid).set(newUser);
+
+    res
+      .status(200)
+      .json({ message: `User with UID ${uid} added successfully.` });
   } catch (error) {
-    console.error("Error adding user: ", error);
+    console.error("Error adding user:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });

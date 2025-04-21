@@ -12,7 +12,7 @@ const addUser = onRequest(async (req, res) => {
       createdAt: new Date(),
     };
 
-    const docRef = await db.collection("Users").add(newUser);
+    const docRef = await db.collection("Users").doc(uid).create(newUser);;
 
     res.status(200).json({ message: `User added with ID: ${docRef.id}` });
 
