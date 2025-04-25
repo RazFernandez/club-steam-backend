@@ -1,9 +1,9 @@
 const { onRequest } = require("firebase-functions/v2/https");
 const { getFirestore } = require("firebase-admin/firestore");
-const admin = require("firebase-admin");
+const { app } = require("./firebaseConfig");
 
 // Initialize Firebase Admin SDK
-const app = admin.initializeApp();
+
 
 const getUserInfo = onRequest(async (req, res) => {
   const uid = req.query.uid;
@@ -52,3 +52,5 @@ const getUserInfo = onRequest(async (req, res) => {
       res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
+module.exports = { getUserInfo };
