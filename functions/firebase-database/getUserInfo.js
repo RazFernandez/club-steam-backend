@@ -27,25 +27,24 @@ const getUserInfo = onRequest(async (req, res) => {
 
     // Only retrieves the data we want
     const userData = {
-      nombreCompleto: `${data.nombres} ${data.apellidoPaterno || ""} ${
+      nombreCompleto: `${data.nombres}${data.apellidoPaterno || ""} ${
         data.apellidoMaterno || ""
       }`.trim(),
-      correoElectronico: data.correoElectronico || "",
-      tipoUsuario: data.tipoUsuario || "",
-      numeroCelular: data.numeroCelular || "",
+      correoElectronico: data.correoElectronico,
+      tipoUsuario: data.tipoUsuario,
+      numeroCelular: data.numeroCelular,
     };
 
     // Extract the fields needed, depending on the user type
-    if (data.tipoUsuario === "Docente" || data.tipoUsuario === "Estudiante") {
+    if (data.tipoUsuario === "Docente") {
       userData.ingenieria = data.ingenieria;
-
-      if (data.data.tipoUsuario === "Estudiante") {
-        userData.numeroControl = data.numeroControl;
-      }
+    } else if (data.tipoUsuario === "Estudiante") {
+      userData.ingenieria = data.ingenieria;
+      userData.numeroControl = data.numeroControl;
     } else if (data.tipoUsuario === "Colaborador") {
       userData.unidadAdministrativa = data.unidadAdministrativa;
     }
-    
+
     res.status(200).json(userData);
   } catch (error) {
       console.error("Error retrieving user:", error);
