@@ -27,12 +27,14 @@ const getUserInfo = onRequest(async (req, res) => {
 
     // Only retrieves the data we want
     const userData = {
-      nombreCompleto: `${data.nombres}${data.apellidoPaterno || ""} ${
+      nombreCompleto: `${data.nombres}${data.apellidoPaterno || ""}${
         data.apellidoMaterno || ""
       }`.trim(),
       correoElectronico: data.correoElectronico,
       tipoUsuario: data.tipoUsuario,
       numeroCelular: data.numeroCelular,
+      proyectos: data.proyectos,
+      fotoPerfil: data. fotoPerfil,
     };
 
     // Extract the fields needed, depending on the user type
