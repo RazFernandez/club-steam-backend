@@ -27,9 +27,12 @@ const getUserInfo = onRequest(async (req, res) => {
 
     // Only retrieves the data we want
     const userData = {
-      nombreCompleto: `${data.nombres}${data.apellidoPaterno || ""}${
-        data.apellidoMaterno || ""
-      }`.trim(),
+    //   nombreCompleto: `${data.nombres}${data.apellidoPaterno || ""}${
+    //     data.apellidoMaterno || ""
+        //   }`.trim(),
+      nombres: data.nombres,
+      apellidoPaterno: data.apellidoPaterno,
+      apellidoMaterno: data.apellidoMaterno,
       correoElectronico: data.correoElectronico,
       tipoUsuario: data.tipoUsuario,
       numeroCelular: data.numeroCelular,
