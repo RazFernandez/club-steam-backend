@@ -81,3 +81,36 @@ La estructura principal del backend es la siguiente:
 
 Estas funciones son consumidas directamente desde la app móvil **Club STEAM** para facilitar la gestión y autenticación de los usuarios.
 
+</br>
+
+## 🤝 Contribuir
+
+- Realiza un fork del repositorio.
+- Crea una rama nueva (`feature/nueva-funcion`, `fix/bug-eliminacion`).
+- Desarrolla y prueba usando Firebase Emulator.
+- Haz un commit siguiendo una convención clara.
+- Envía un Pull Request describiendo tu cambio.
+
+
+</br>
+
+## 📎 Recursos del proyecto
+- 📄 **Analisís de requisitos**: [link](https://drive.google.com/file/d/1j382WC3epZ4USOsc5QA20-upYzWMVVdc/view?usp=sharing)
+- 📖 **Diccionario de datos**: [link](https://drive.google.com/file/d/1eidcLBA368gnoVNHysQjJCLNVcC97BNY/view?usp=sharing)
+- 📊 **Diagramas de la aplicación**: [link](https://drive.google.com/drive/folders/1ODu_-UBkVoS_Fy8dgYrN45kIP9eAJCEM?usp=sharing)
+- 🎨 **Componentes en Figma para la interfaz de usuario**: [link](https://drive.google.com/drive/folders/1H1uvHyqtBwZrcE9htaDW-c4WdfDBWPz1?usp=sharing)
+- 🧩 **Interfaces desarrolladas en Balsamiq (wireframes de baja fidelidad)**: [link](https://drive.google.com/drive/folders/1Ds8j4xuGCCi5BN2bcHivMM5WK2CrvPpV?usp=sharing)
+- 🖼️ **Interfaces desarrolladas en Figma (diseño visual final)**: [link](https://drive.google.com/drive/folders/1Cj01WSLmdL2szF1F1a6LW9sDPvfTeM3F?usp=sharing)
+- 🔄 **Prototipo interactivo en Figma**: [link](https://www.figma.com/proto/jCwmiHyeVkdLlvOZtxhu9X/Club-Steam?node-id=33-3872&t=CkpAVjORqycpr3kP-1&starting-point-node-id=33%3A3872)
+- 📱 **APK de la aplicación para pruebas**: [link](https://drive.google.com/drive/folders/1V_q7_l3E-voORXtVQDVyLvzuySwarEp7?usp=sharing)
+- 🗄️ **Repositorio del proyecto de backend**: [link](https://github.com/RazFernandez/club-steam-backend)
+
+---
+
+**Club STEAM** - Proyecto de innovación educativa
+
+_Desarrollado bajo la metodología de residencias profesionales y pora la obtencion del titulo en Ingenieria En Sistemas Computacionales._
+
+_Código Desarrollado por Miguel Raziel Jesús Fernández Pascual_
+
+
