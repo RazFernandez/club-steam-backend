@@ -32,25 +32,25 @@ const createUser = onRequest(async (req, res) => {
 
     // Create the user object
     const newUser = {
-      uid,
-      nombres,
-      apellidoPaterno,
-      apellidoMaterno,
-      correoElectronico,
-      numeroCelular,
-      tipoUsuario,
-      fotoPerfil: fotoPerfil || "",
+      uid: uid.trim(),
+      nombres: nombres?.trim(),
+      apellidoPaterno: apellidoPaterno?.trim(),
+      apellidoMaterno: apellidoMaterno?.trim(),
+      correoElectronico: correoElectronico?.trim().toLowerCase(),
+      numeroCelular: numeroCelular?.trim(),
+      tipoUsuario: tipoUsuario?.trim(),
+      fotoPerfil: fotoPerfil?.trim() || "",
       proyectos: proyectos || [],
     };
 
     // Add additional fields based on user type
     if (tipoUsuario === "Docente") {
-      newUser.ingenieria = ingenieria;
+      newUser.ingenieria = ingenieria?.trim();
     } else if (tipoUsuario === "Estudiante") {
-      newUser.ingenieria = ingenieria;
-      newUser.numeroControl = numeroControl;
+      newUser.ingenieria = ingenieria?.trim();
+      newUser.numeroControl = numeroControl?.trim();
     } else if (tipoUsuario === "Colaborador") {
-      newUser.unidadAdministrativa = unidadAdministrativa;
+      newUser.unidadAdministrativa = unidadAdministrativa?.trim();
     }
 
     // Save user document using UID as the document ID
