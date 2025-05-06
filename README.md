@@ -103,7 +103,7 @@ Estas funciones son consumidas directamente desde la app móvil **Club STEAM** p
 - 🖼️ **Interfaces desarrolladas en Figma (diseño visual final)**: [link](https://drive.google.com/drive/folders/1Cj01WSLmdL2szF1F1a6LW9sDPvfTeM3F?usp=sharing)
 - 🔄 **Prototipo interactivo en Figma**: [link](https://www.figma.com/proto/jCwmiHyeVkdLlvOZtxhu9X/Club-Steam?node-id=33-3872&t=CkpAVjORqycpr3kP-1&starting-point-node-id=33%3A3872)
 - 📱 **APK de la aplicación para pruebas**: [link](https://drive.google.com/drive/folders/1V_q7_l3E-voORXtVQDVyLvzuySwarEp7?usp=sharing)
-- 🗄️ **Repositorio del proyecto de backend**: [link](https://github.com/RazFernandez/club-steam-backend)
+- 📲 **Repositorio del proyecto de frontend**: [link](https://github.com/RazFernandez/club_steam_app)
 
 ---
 
